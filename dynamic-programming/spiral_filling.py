@@ -1,69 +1,44 @@
+# https://informatics.msk.ru/mod/statements/view.php?id=88420&chapterid=111384#1
+
 def get_spiral_filling_matrix(m, n):
     
     matrix = [[0] * n for _ in range(m)]
     
-    string_top_idx = 0
-    string_bottom_idx = m - 1
-    column_left_idx = 0
-    column_right_idx = n - 1
+    top, bottom = 0, m - 1
+    left, right = 0, n - 1
     
-    string_idx = 0
-    column_idx = 0
+    num = 1
     
-    num_in_matrix = 1
-    
-    while num_in_matrix <= m * n:
-        if string_idx == string_top_idx and column_idx == column_left_idx:
-            # Итерируемся по столбцам вправо
-            while column_idx <= column_right_idx:
-                matrix[string_idx][column_idx] = num_in_matrix
-                column_idx += 1
-                num_in_matrix += 1
-            # По текущей верхней строке нам больше не нужно итерироваться, ее исключаем    
-            string_top_idx += 1
-            # Перескакиваем ниже
-            string_idx += 1
-            # Возвращаем индекс на место, так как в цикле выше он лишний раз увеличивается
-            column_idx -= 1
-            
-        elif string_idx == string_top_idx and column_idx == column_right_idx:
-            # Итерируемся по строкам вниз
-            while string_idx <= string_bottom_idx:
-                matrix[string_idx][column_idx] = num_in_matrix
-                string_idx += 1
-                num_in_matrix += 1
-            # По текущему правому столбцу нам больше не нужно итерироваться, его исключаем
-            column_right_idx -= 1 
-            # Перескакиваем левее
-            column_idx -= 1
-            # Возвращаем индекс на место, так как в цикле выше он лишний раз увеличивается
-            string_idx -= 1
-            
-        elif string_idx == string_bottom_idx and column_idx == column_right_idx:
-            # Итерируемся по столбцам влево
-            while column_idx >= column_left_idx:
-                matrix[string_idx][column_idx] = num_in_matrix
-                column_idx -= 1
-                num_in_matrix += 1
+    while num <= m * n:
+        # Итерируемся по столбцам вправо
+        for i in range(left, right + 1):
+            matrix[top][i] = num
+            num += 1
+        # По текущей верхней строке нам больше не нужно итерироваться, ее исключаем    
+        top += 1
+        
+        # Итерируемся по строкам вниз
+        for i in range(top, bottom + 1):
+            matrix[i][right] = num
+            num += 1
+        # По текущему правому столбцу нам больше не нужно итерироваться, его исключаем
+        right -= 1 
+        
+        # Итерируемся по столбцам влево
+        if top <= bottom:
+            for i in range (right, left - 1, -1):
+                matrix[bottom][i] = num
+                num += 1
             # По текущей нижней строке нам больше не нужно итерироваться, ее исключаем
-            string_bottom_idx -= 1
-            # Перескакиваем вверх
-            string_idx -= 1
-            # Возвращаем индекс на место, так как в цикле выше он лишний раз увеличивается
-            column_idx += 1
-                
-        elif string_idx == string_bottom_idx and column_idx == column_left_idx:
-            # Итерируемся по строкам вверх
-            while string_idx >= string_top_idx:
-                matrix[string_idx][column_idx] = num_in_matrix
-                string_idx -= 1
-                num_in_matrix += 1
+            bottom -= 1
+        
+        # Итерируемся по строкам вверх
+        if left <= right:
+            for i in range (bottom, top - 1, -1):
+                matrix[i][left] = num
+                num += 1
             # По текущему левому столбцу нам больше не нужно итерироваться, его исключаем
-            column_left_idx += 1
-            # Перескакиваем вправо
-            column_idx += 1
-            # Возвращаем индекс на место, так как в цикле выше он лишний раз увеличивается
-            string_idx += 1
+            left += 1
     
     return matrix
             
