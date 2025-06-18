@@ -8,47 +8,30 @@ def get_saddle_points(m, n, matrix):
     
     saddle_points_list = []
     
-    str_idx = 0
-    
-    while str_idx < m - 1:
+    for i in range(m):
+        # Находим минимальный элемент в строке и его индексы
+        min_in_row = min(matrix[i])
+        min_cols_idx_list = [j for j in range(n) if matrix[i][j] == min_in_row]
         
-        min_num_in_str = float('inf')
-        min_num_in_str_idx = 0
-        
-        max_num_in_column = float('-inf')
-        max_num_in_column_idx = 0
-        
-        for j in range(n):
-            if matrix[str_idx][j] < min_num_in_str:
-                min_num_in_str = matrix[str_idx][j]
-                min_num_in_str_idx = j
-                
-        for i in range(m):
-            if matrix[i][min_num_in_str_idx] > max_num_in_column:
-                max_num_in_column = matrix[i][min_num_in_str_idx]
-                max_num_in_column_idx = i
-        
-        if min_num_in_str == max_num_in_column:
-            saddle_points_list.append([max_num_in_column_idx + 1, min_num_in_str_idx + 1])
-        
-        str_idx += 1
-                
+        for j in min_cols_idx_list:
+            # Проверяем, является ли этот элемент максимальным в столбце
+            column = [matrix[k][j] for k in range(m)]
+            if matrix[i][j] == max(column):
+                saddle_points_list.append((i + 1, j + 1))
 
-    return saddle_points_list
+    return saddle_points_list if saddle_points_list else 0
 
 
 def print_all_saddle_points(saddle_points_list):
     
-    if not saddle_points_list:
-        print('0')
-    
-    for i in range(len(saddle_points_list)):
-        print(' '.join(list(map(str, saddle_points_list[i]))))
+    if saddle_points_list == 0:
+        print(0)
+    else:
+        for saddle_point in saddle_points_list:
+            print(' '.join(list(map(str, saddle_point))))
 
-m, n = list(map(int, input().split()))
-matrix = []
+m, n = map(int, input().split())
+matrix = [list(map(int, input().split())) for _ in range(m)]
 
-for _ in range(m):
-    matrix.append(list(map(int, input().split())))
     
 print_all_saddle_points(get_saddle_points(m, n, matrix))
