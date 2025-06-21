@@ -1,8 +1,8 @@
 # https://informatics.msk.ru/mod/statements/view.php?id=766&chapterid=1792#1
-# Но без восстановления 
 
 
-def get_lis_without_recovery(seq):
+
+def get_lis_with_recovery(seq):
     
     if not seq:
         return 0
@@ -19,4 +19,4 @@ def get_lis_without_recovery(seq):
                 
 n = int(input())
 seq = list(map(int, input().split()))
-print(get_lis_without_recovery(seq))
+print(get_lis_with_recovery(seq))

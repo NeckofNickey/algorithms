@@ -14,7 +14,7 @@ def get_optimal_route(n, k, gas_station_list):
             gas_station_index += 1
         
         if last_stop == current_stop:
-            return - 1
+            return -1
         
         current_stop = last_stop
         stops += 1
