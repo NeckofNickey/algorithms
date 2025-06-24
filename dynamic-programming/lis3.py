@@ -4,40 +4,29 @@
 def get_lis(seq):
     
     n = len(seq)
-    matrix = [[float('inf')] * (n + 1) for _ in range(n + 1)]
     
-    # Инициализация таблицы LIS
-    for i in range(n + 1):
-        matrix[i][0] = -float('inf')
-        
-    # Заполнение таблицы LIS
-    for i in range(1, n + 1):
-        x_i = seq[i - 1]
-        for j in range(n + 1):
-            if matrix[i - 1][j - 1] < x_i < matrix[i - 1][j]:
-                matrix[i][j] = x_i
-            else:
-                matrix[i][j] = matrix[i - 1][j]
+    # Инициализация: длина LIS для каждого элемента как минимум 1
+    length = [1] * n
+    predecessor = [-1] * n # -1 означает отсутствие предшественника
     
-    # Находим максимальную длину подпоследовательности
-    max_len = 0
-    for j in range(n, 0, -1):
-        if matrix[n][j] != float('inf'):
-            max_len = j
-            break
-        
+    for i in range(n):
+         for j in range(i + 1, n):
+            if seq[j] > seq[i] and length[i] + 1 > length[j]:
+                length[j] = length[i] + 1
+                predecessor[j] = i # предшественник a[j] в цепочке
+                
+    # Находим индекс элемента с максимальной длиной LIS
+    max_len = max(length)
+    current_index = length.index(max_len)
+
     # Восстанавливаем подпоследовательность
     lis = []
-    current_len = max_len
-    current_val = float('inf')
-    for i in range(n, 0, -1):
-        if matrix[i][current_len] < current_val and matrix[i][current_len] != matrix[i - 1][current_len]:
-            lis.append(matrix[i][current_len])
-            current_val = matrix[i][current_len]
-            current_len -= 1
+    while current_index != -1:
+        lis.append(seq[current_index])
+        current_index = predecessor[current_index]
+    
             
-            
-    return lis[::-1]
+    return lis[::-1]  # Разворачиваем, так как добавляли с конца
 
 n = int(input())
 seq = list(map(int, input().split()))
