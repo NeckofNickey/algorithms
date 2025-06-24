@@ -1,3 +1,4 @@
+# https://informatics.msk.ru/mod/book/view.php?id=488&forceview=1
 # https://informatics.msk.ru/mod/statements/view.php?id=766&chapterid=1792#1
 
 def get_lis(seq):
