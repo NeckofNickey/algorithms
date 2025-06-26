@@ -9,6 +9,7 @@ def get_lis(seq):
     length = [1] * n
     predecessor = [-1] * n # -1 означает отсутствие предшественника
     
+    # Заполняем массивы длины и предшественника
     for i in range(n):
          for j in range(i + 1, n):
             if seq[j] > seq[i] and length[i] + 1 > length[j]:

@@ -48,4 +48,4 @@ seq = list(map(int, input().split()))
 lis = get_lis(seq)
 print(' '.join(map(str, lis)))
 
-# 3 1 4 1 5
+# 3 29 5 5 28 6 1 2
