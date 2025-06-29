@@ -1,3 +1,5 @@
+# https://informatics.msk.ru/mod/statements/view.php?id=649&chapterid=843#1
+
 def get_n_seq(n):
     
     n_seq = [0] * (n + 1) 
