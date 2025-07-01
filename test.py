@@ -1,8 +1,16 @@
-a = [1, 1, 2, 4]
+line = input('Введите строку: ')
 
-print(1 << 3)
+punctuation = r'''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+cleaned_line = ''.join(char if char not in punctuation else ' ' for char in line)
 
-if (3 & (1 << 3)) != 0:
-    print(3)
+words = cleaned_line.split()
+
+if not words:
+    print("Введена пустая строка")
+else:
+    num_words = len(words)
+    total_length = sum(len(word) for word in words)
+    avg_length = total_length / num_words
     
-    print(3333333)
+    print(f'Количество слов: {num_words}')
+    print(f'Средняя длина слова: {avg_length}')
