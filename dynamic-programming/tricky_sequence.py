@@ -11,8 +11,6 @@ def get_n_seq(n):
         if i*2 + 2 <= n + 1:
             n_seq[i*2 + 2] = n_seq[(i*2 + 2) // 2] + 1
             n_seq[i*2 + 1] = n_seq[i*2 + 2] + n_seq[i]
-
-    print(n_seq)
     
     return n_seq[n]
 
