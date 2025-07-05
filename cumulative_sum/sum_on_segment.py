@@ -1,5 +1,7 @@
 # https://informatics.msk.ru/mod/statements/view.php?id=67323&chapterid=2771#1
 
+# превышено максимальное время работы
+
 def get_cumsum_list(array):
     
     n = len(array)
