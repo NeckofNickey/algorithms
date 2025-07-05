@@ -2,18 +2,12 @@
 
 def get_cumsum_list(array):
     
-    if not array:
-        return 0
-    
     n = len(array)
      
-    cumsum_list = [0]
-    
-    last = 0
-    
+    cumsum_list = [0] * (n + 1)
+
     for i in range(n):
-        last += array[i]
-        cumsum_list.append(last)
+        cumsum_list[i + 1] = cumsum_list[i] + array[i]
 
     return cumsum_list
 
