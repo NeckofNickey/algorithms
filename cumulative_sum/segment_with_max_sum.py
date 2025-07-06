@@ -20,7 +20,7 @@ def get_segment_with_max_sum(array):
         # Обновляем global_max и индексы, если текущая сумма больше
         # или если суммы равны, но j меньше или i больше
         if (current_max > global_max) or \
-        ((current_max == global_max) and (i < end or (i == end and temp_start >= start))):
+        ((current_max == global_max) and (i < end or (i == end and temp_start > start))):
             global_max = current_max
             start = temp_start
             end = i   
