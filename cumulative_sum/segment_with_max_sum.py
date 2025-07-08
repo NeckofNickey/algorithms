@@ -4,28 +4,28 @@ def get_segment_with_max_sum(array):
     
     n = len(array)
     
-    current_max = array[0]
-    global_max = array[0]
-    start = 0
-    end = 0
-    temp_start = 0
+    max_sum = -float('inf')
+    max_sum_l = -1
+    max_sum_r = -1
     
-    for i in range(1, n):
-        if array[i] > current_max + array[i]:
-            current_max = array[i]
-            temp_start = i
-        else:
-            current_max += array[i]
+    min_sum = 0
+    min_sum_idx = -1
     
-        # Обновляем global_max и индексы, если текущая сумма больше
-        # или если суммы равны, но j меньше или i больше
-        if (current_max > global_max) or \
-        ((current_max == global_max) and (i < end or (i == end and temp_start > start))):
-            global_max = current_max
-            start = temp_start
-            end = i   
+    cumsum = 0
     
-    return ([start + 1, end + 1])
+    for i in range(n):
+        cumsum += array[i]
+        
+        if cumsum - min_sum > max_sum:
+            max_sum = cumsum - min_sum 
+            max_sum_r = i
+            max_sum_l = min_sum_idx + 1
+        
+        if cumsum <= min_sum:
+            min_sum = cumsum
+            min_sum_idx = i
+            
+    return max_sum_l + 1, max_sum_r + 1
         
 
 

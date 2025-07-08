@@ -3,9 +3,9 @@
 
 def search_num_approx(num, array):
     
-    if array[0] > num:
+    if array[0] >= num:
         return array[0]
-    elif array[-1] < num:
+    elif array[-1] <= num:
         return array[-1]
     
     left = 0
