@@ -10,21 +10,18 @@ def get_root(n, num):
     start_num = 0
     end_num = max(1, num)
     
-    root = -1
+    eps = 1e-7
     
-    while abs(root ** n - num) > 0.000001:
+    while end_num - start_num > eps:
+        
         mid_num = (start_num + end_num) / 2
         
-        if mid_num**n == num:
-            return mid_num
-        elif mid_num**n > num:
-            root = mid_num
+        if mid_num**n > num:
             end_num = mid_num
         else:
-            root = mid_num
             start_num = mid_num
             
-    return root
+    return (start_num + end_num) / 2
         
 
 num = float(input())
