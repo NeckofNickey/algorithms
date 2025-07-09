@@ -1,6 +1,7 @@
 # https://informatics.msk.ru/mod/statements/view.php?id=67323&chapterid=2771#1
+# Сумма на отрезке
 
-# превышено максимальное время работы
+import sys
 
 def get_cumsum_list(array):
     
@@ -14,11 +15,18 @@ def get_cumsum_list(array):
     return cumsum_list
 
 
-a, r = tuple(map(int, input().split()))
-array = list(map(int, input().split()))
+data = sys.stdin.read().split()
+a = int(data[0])
+r = int(data[1])
+array = list(map(int, data[2:2 + a]))
 
 cumsum_list = get_cumsum_list(array)
 
-for _ in range(r):
-    x, y = tuple(map(int, input().split()))
-    print(cumsum_list[y] - cumsum_list[x - 1])
+result_list = []
+for i in range(2 + a, a + 2 + 2 * r, 2):
+    x = int(data[i])
+    y = int(data[i + 1])
+    result_list.append(str(cumsum_list[y] - cumsum_list[x - 1]))
+
+sys.stdout.write('\n'.join(result_list))
+    
