@@ -4,19 +4,16 @@
 def get_min_square_for_diplomas(w, h, n):
     
     left = 0
-    right = n * (w + h)
+    right = max(w, h) * n
     
-    while left <= right:
+    while left < right:
         mid = (left + right) // 2
-        
-        if (mid // h) * (mid // w) == n:
-            return mid
-        elif (mid // h) * (mid // w) < n:
-            left = mid + 1
+        if (mid // h) * (mid // w) >= n:
+            right = mid
         else:
-            right = mid - 1
+            left = mid + 1
             
-    return mid    
+    return left 
 
 
 w, h, n = map(int, input().split())
