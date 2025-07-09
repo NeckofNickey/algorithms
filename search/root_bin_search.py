@@ -8,7 +8,7 @@ def get_root(n, num):
         return num
     
     start_num = 0
-    end_num = num
+    end_num = max(1, num)
     
     root = -1
     
@@ -27,7 +27,7 @@ def get_root(n, num):
     return root
         
 
-num = int(input())
+num = float(input())
 n = int(input())
 
 print(get_root(n, num))
