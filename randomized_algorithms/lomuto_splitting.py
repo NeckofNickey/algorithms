@@ -3,20 +3,15 @@
 
 def get_lomuto_splitting(n, array):
     
-    first_num = array[0]
-    
-    more_idx_start = 1
-    more_idx_end = 1
+    pivot = array[0]
+    split_index = 1
     
     for i in range(1, n):
-        if array[i] < first_num:
-            array[i], array[more_idx_start] = array[more_idx_start], array[i]
-            more_idx_end = i
-            more_idx_start += 1
-        else:
-            more_idx_end = i
+        if array[i] < pivot:
+            array[i], array[split_index] = array[split_index], array[i]
+            split_index += 1
             
-    array[0], array[more_idx_start - 1] = array[more_idx_start - 1], array[0]
+    array[0], array[split_index - 1] = array[split_index - 1], array[0]
   
     return array
 
@@ -24,4 +19,6 @@ def get_lomuto_splitting(n, array):
 n = int(input())
 array = list(map(int, input().split()))
 
-print(' '.join(map(str, get_lomuto_splitting(n, array))))
+partitioned_array = get_lomuto_splitting(n, array)
+
+print(' '.join(map(str, partitioned_array)))
