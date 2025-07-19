@@ -1,6 +1,8 @@
 # https://informatics.msk.ru/mod/statements/view.php?id=1966&chapterid=414#1
 # Эльфы и олени
 
+# Решается не корректно
+
 import sys
 
 def get_solve(m, n, a_list, b_list):
