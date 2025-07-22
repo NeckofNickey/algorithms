@@ -7,22 +7,19 @@ def get_game_result(cards1: list, cards2: list) -> tuple:
     
     while cards1 and cards2:
         
-        c1 = cards1.pop()
-        c2 = cards2.pop()
+        if counter >= 10**6:
+            return ('botva', '')
         
-        if c1 == 0 and c2 == 9:
-            cards1[0:0] = [c2, c1]
-        elif c2 == 0 and c1 == 9:
-            cards2[0:0] = [c2, c1]
-        elif c1 > c2:
-            cards1[0:0] = [c2, c1]
-        else:
-            cards2[0:0] = [c2, c1]
+        c1 = cards1.pop(0)
+        c2 = cards2.pop(0)
+        
+        if (c1 == 0 and c2 == 9) or (c1 > c2 and not (c2 == 0 and c1 == 9)):
+            cards1.extend([c1, c2])
+        elif (c2 == 0 and c1 == 9) or (c2 > c1 and not (c1 == 0 and c2 == 9)):
+            cards2.extend([c2, c1])
         
         counter += 1
         
-        if counter > 1e6:
-            break
                 
     if not cards1:
         return ('second', str(counter))
@@ -36,6 +33,8 @@ def get_game_result(cards1: list, cards2: list) -> tuple:
 cards1 = list(map(int, input().split()))
 cards2 = list(map(int, input().split()))
 
-game_result = get_game_result(cards1, cards2)
+# Получаем результат
+winner, moves = get_game_result(cards1, cards2)
 
-print(' '.join(game_result))
+# Выводим результат
+print(winner if winner == 'botva' else f"{winner} {moves}")
