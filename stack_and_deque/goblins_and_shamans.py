@@ -2,11 +2,12 @@
 # Гоблины и шаманы
 
 import sys
-import math
+from collections import deque
 
 def get_number_of_goblin(operations: list) -> list:
     
-    deq = []
+    left = deque()
+    right = deque()
     
     queue = []
     
@@ -15,17 +16,22 @@ def get_number_of_goblin(operations: list) -> list:
     while operations and index < len(operations):
         
         if operations[index] == '+':
-            deq.append(operations[index + 1])
+            right.append(operations[index + 1])
+            # Балансировка
+            if len(right) > len(left):
+                left.append(right.popleft())
             index += 2
         elif operations[index] == '*':
-            mid = math.ceil(len(deq) / 2)
-            first_part = deq[:mid]
-            second_part = deq[mid:]
-            first_part.append(operations[index + 1])
-            deq = first_part + second_part
+            right.appendleft(operations[index + 1])
+            # Балансировка
+            if len(right) > len(left):
+                left.append(right.popleft())
             index += 2
         elif operations[index] == '-':
-            queue.append(deq.pop(0))
+            queue.append(left.popleft())
+            # Балансировка
+            if len(left) < len(right):
+                left.append(right.popleft())
             index += 1
             
     return queue
