@@ -8,14 +8,13 @@ def get_pairs(n):
     pairs_list = []
     
     for num in range(n + 1):
-        if num & n - num == 0:
+        if (num & n) == num and (num & (n - num)) == 0:
             pairs_list.append(f'{num} {n - num}')
     
     return pairs_list
 
 
-n = int(input())
-
+n = int(sys.stdin.readline())
 pairs_list = get_pairs(n)
 
 sys.stdout.write('\n'.join(pairs_list))
