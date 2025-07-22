@@ -23,7 +23,7 @@ def get_game_result(cards1: list, cards2: list) -> tuple:
         if first_wins(c1, c2):
             cards1.extend([c1, c2])
         else:
-            cards2.extend([c2, c1])
+            cards2.extend([c1, c2])
         
         counter += 1
         
