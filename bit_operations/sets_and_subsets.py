@@ -8,7 +8,7 @@ def get_pairs(n):
     pairs = []
     subset = n
     while True:
-        z = n ^ subset  # Z — это X без элементов Y
+        z = n ^ subset  # Z - это X без элементов Y
         pairs.append((subset, z))
         if subset == 0:
             break
@@ -19,7 +19,8 @@ def get_pairs(n):
     return pairs
 
 
-n = int(sys.stdin.readline())
-pairs_list = get_pairs(n)
-
-sys.stdout.write('\n'.join(f'{y} {z}' for y, z in pairs_list))
+line = sys.stdin.readline()
+if line.strip():  # защищаемся от пустого ввода
+    n = int(line)
+    pairs_list = get_pairs(n)
+    sys.stdout.write('\n'.join(f'{y} {z}' for y, z in pairs_list) + '\n')
