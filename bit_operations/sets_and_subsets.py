@@ -5,16 +5,21 @@ import sys
 
 def get_pairs(n):
     
-    pairs_list = []
+    pairs = []
+    subset = n
+    while True:
+        z = n ^ subset  # Z — это X без элементов Y
+        pairs.append((subset, z))
+        if subset == 0:
+            break
+        subset = (subset - 1) & n  # следующий поднабор X
+        
+    pairs.sort()  # по возрастанию сначала по Y, потом по Z
     
-    for num in range(n + 1):
-        if (num & n) == num and (num & (n - num)) == 0:
-            pairs_list.append(f'{num} {n - num}')
-    
-    return pairs_list
+    return pairs
 
 
 n = int(sys.stdin.readline())
 pairs_list = get_pairs(n)
 
-sys.stdout.write('\n'.join(pairs_list))
+sys.stdout.write('\n'.join(f'{y} {z}' for y, z in pairs_list))
