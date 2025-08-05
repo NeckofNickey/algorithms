@@ -7,7 +7,9 @@ def fibonacci(n, memo={}):
     if n <= 2:
         return 1
     
-    return fibonacci(n - 1, memo) + fibonacci(n - 2, memo)
+    memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo)
+    
+    return memo[n]
 
 
 print(fibonacci(10))
