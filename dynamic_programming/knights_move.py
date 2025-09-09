@@ -1,4 +1,5 @@
 # https://informatics.msk.ru/mod/statements/view.php?id=656&chapterid=946#1
+# Ход конем
 
 def get_num_of_ways(m, n):
     
