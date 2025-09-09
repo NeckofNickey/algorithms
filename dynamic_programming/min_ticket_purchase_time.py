@@ -1,4 +1,5 @@
 # https://informatics.msk.ru/mod/statements/view.php?id=81344#1
+# Покупка билетов
 
 def get_min_ticket_purchase_time(time_list):
     
