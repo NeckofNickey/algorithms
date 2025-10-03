@@ -48,6 +48,7 @@ def get_merging_sorted_sequences(list_1, list_2):
     return sorted_list
 
 
+
 if __name__ == '__main__':
     n = int(input())
     unsorted_list = list(map(int, input().split()))
