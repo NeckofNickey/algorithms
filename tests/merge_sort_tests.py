@@ -21,6 +21,7 @@ sys.path.append(project_dir)
 
 from sorting.merge_sorting import merge_sorting, get_merging_sorted_sequences
 
+
 # Ваши функции merge_sorting и get_merging_sorted_sequences здесь...
 
 class TestMergeSort(unittest.TestCase):
