@@ -1,7 +1,11 @@
 # https://new.contest.yandex.ru/contests/48569/problem?id=215%2F2023_04_06%2Fxwt1i1wLpb
+# Сортировка слиянием
 
 
 def merge_sorting(unsorted_list):
+
+    if not unsorted_list:
+        return []
 
     n = len(unsorted_list) 
 
@@ -44,7 +48,7 @@ def get_merging_sorted_sequences(list_1, list_2):
     return sorted_list
 
 
-n = int(input())
-unsorted_list = list(map(int, input().split()))
-
-print(' '.join(map(str, merge_sorting(unsorted_list))))
+if __name__ == '__main__':
+    n = int(input())
+    unsorted_list = list(map(int, input().split()))
+    print(' '.join(map(str, merge_sorting(unsorted_list))))
