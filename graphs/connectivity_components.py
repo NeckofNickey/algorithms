@@ -33,6 +33,7 @@ edges_num = int(data[1])
 graph = [[] for _ in range(vertex_num)]
 
 idx = 2
+
 for _ in range(edges_num):
     u = int(data[idx]) - 1
     v = int(data[idx + 1]) - 1
@@ -50,7 +51,4 @@ for comp in components:
     print(len(comp))
     print(' '.join(map(str, sorted(comp))))
 
-
-
-# edges_list = [[int(data[i]), int(data[i + 1])] for i in range(2, len(data), 2)]
 
