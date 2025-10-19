@@ -8,11 +8,11 @@ import sys
 
 def dfs(v, graph, visited):
 
-        visited[v] = True
+    visited[v] = True
 
-        for neighbor in graph[v]:
-            if not visited[neighbor]:
-                dfs(neighbor, graph, visited)
+    for neighbor in graph[v]:
+        if not visited[neighbor]:
+            dfs(neighbor, graph, visited)
 
 
 def is_tree(m, matrix):
