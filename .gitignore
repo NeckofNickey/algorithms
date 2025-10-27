@@ -2,3 +2,6 @@
 *.xlsx
 *.jpg
 test*.py
+
+# system files
+.DS_Store
