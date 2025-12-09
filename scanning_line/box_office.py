@@ -13,7 +13,6 @@ def get_intersect_time(intervals, intersect_factor):
     
     events.sort()
 
-
     intersect_time = 0
     intersections = 0
     current_start = 0
