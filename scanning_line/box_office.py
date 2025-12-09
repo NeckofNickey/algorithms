@@ -26,9 +26,6 @@ def get_intersect_time(intervals, intersect_factor):
         elif intersections < intersect_factor and is_start:
             is_start = False
             intersect_time += time - current_start
-
-    if is_start:
-        intersect_time += 1440 - current_start
     
     return intersect_time
 
