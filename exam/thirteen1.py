@@ -13,7 +13,6 @@ def min_zeros_in_mask(host_ip, network_ip):
     print(bin(h))
     print(bin(n))
     
-    # Количество нулей в маске = 32 - prefix_len
     return (h ^ n).bit_length()
 
 # Решение для конкретной задачи
