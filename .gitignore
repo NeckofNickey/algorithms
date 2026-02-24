@@ -2,6 +2,10 @@
 *.xlsx
 *.jpg
 test*.py
+.ipynb_checkpoints
 
 # system files
 .DS_Store
+
+# venv
+jupyter_env
