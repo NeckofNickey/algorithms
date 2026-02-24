@@ -16,8 +16,5 @@ for i in range(n):
         result[i] += result[idx] + 1
 
     stack.append((arr[i], i))
-
-
-    
     
 print(' '.join(map(str, result)))
