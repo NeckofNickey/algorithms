@@ -6,7 +6,6 @@ test*.py
 
 # system files
 .DS_Store
-.vscode
 
 # venv
 jupyter_env
